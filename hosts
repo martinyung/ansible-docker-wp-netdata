@@ -1,2 +1,2 @@
 [wordpress]
-http://54.251.190.142 ansible_host=54.251.190.142 ansible_python_interpreter=/usr/bin/python3
+http://[target_ip] ansible_host=[target_ip] ansible_python_interpreter=/usr/bin/python3

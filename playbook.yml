@@ -6,7 +6,7 @@
   
   remote_user: "{{ system_user }}"
   become: yes
-  
+
   roles: 
     - docker
     - containerised-wordpress

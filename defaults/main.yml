@@ -1,11 +1,28 @@
 ---
+# system setup vars
 system_user: ubuntu
-project_dir: /home/{{ system_user }}/wordpress-compose
 
+# wordpress and db vars
+wp_project_dir: /home/{{ system_user }}/wordpress-compose
 wp_version: 4.7.1
 wp_db_name: wpdb
 wp_table_prefix: wp_
 wp_db_host: mysql
 wp_db_pass: dockerwp123
-
 mysql_pass: dockerwp123
+
+# netdata vars
+netdata_dependencies:
+  - zlib1g-dev
+  - uuid-dev
+  - libmnl-dev
+  - gcc
+  - make
+  - git
+  - autoconf
+  - autoconf-archive
+  - autogen
+  - automake
+  - pkg-config
+netdata_repo_dir: /home/{{ system_user }}/netdata
+netdata_install_dir: /usr/sbin/netdata
