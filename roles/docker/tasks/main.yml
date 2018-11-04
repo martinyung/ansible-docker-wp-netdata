@@ -1,7 +1,62 @@
 ---
 - name: Update and upgrade apt packages
-  become: true
   apt:
     upgrade: yes
     update_cache: yes
-    cache_valid_time: 86400 # One day 
+    cache_valid_time: 86400 # One day
+
+- name: Install docker packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags:
+    - docker
+
+- name: Add Docker s official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
+
+- name: Verify that we have the key with the fingerprint
+  apt_key:
+    id: 0EBFCD88
+    state: present
+  tags:
+    - docker
+
+- name: Set up the stable repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+
+- name: Install docker-ce and docker-compose
+  apt:
+    name: "{{ item }}"
+    name: docker-ce=17.03.*
+    update_cache: yes
+    install_recommends: yes
+    state: present
+  with_items:
+  - docker-ce
+  - docker-compose
+  tags:
+    - docker
+
+- name: Add users to the Docker group
+  user:
+    name: "{{ system_user }}"
+    groups: docker
+    append: yes
+  tags:
+    - docker
