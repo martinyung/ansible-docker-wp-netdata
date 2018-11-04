@@ -1,5 +1,5 @@
 ---
-- name: Check if present netdata is present
+- name: Check if netdata is present
   stat:
     path: "{{ netdata_install_dir }}/netdata"
   register: netdata_present
