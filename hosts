@@ -1,2 +1,2 @@
 [wordpress]
-ip-172-31-8-167 ansible_host=54.251.190.142 ansible_python_interpreter=/usr/bin/python3
+http://54.251.190.142 ansible_host=54.251.190.142 ansible_python_interpreter=/usr/bin/python3

@@ -7,3 +7,5 @@ wp_db_name: wpdb
 wp_table_prefix: wp_
 wp_db_host: mysql
 wp_db_pass: dockerwp123
+
+mysql_pass: dockerwp123
