@@ -7,14 +7,14 @@
 
 - name: Install docker packages
   apt:
-    name: "{{ item }}"
+    name: [
+      'apt-transport-https',
+      'ca-certificates',
+      'curl',
+      'software-properties-common'
+    ]
     state: present
     update_cache: yes
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
   tags:
     - docker
 
@@ -42,14 +42,13 @@
 
 - name: Install docker-ce and docker-compose
   apt:
-    name: "{{ item }}"
-    name: docker-ce=17.03.*
+    name: [
+      'docker-ce',
+      'docker-compose'
+    ]
     update_cache: yes
     install_recommends: yes
     state: present
-  with_items:
-  - docker-ce
-  - docker-compose
   tags:
     - docker
 

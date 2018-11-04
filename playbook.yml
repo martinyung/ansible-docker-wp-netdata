@@ -1,5 +1,12 @@
 ---
 - hosts: wordpress
+
+  vars_files:
+    - defaults/main.yml
+  
+  remote_user: "{{ system_user }}"
+  become: yes
+  
   roles: 
     - docker
     - containerised-wordpress
